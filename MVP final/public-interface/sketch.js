@@ -1,0 +1,81 @@
+let canvas;
+
+/* const PORT = 5050;
+const IPaddress = '192.168.1.5'; */
+let pantalla;
+
+//caraga de imagenes
+let imgIntefaz;
+let imgPant1
+
+//variable para barra de carga pantalla 1
+let ancho;
+
+function preload(){
+    imgIntefaz = new loadImage("data/pantalla 1 (tiempo de carga).png");
+    imgPant1 = new loadImage("data/pantalla 2(indicaciones del juego).png");
+}
+
+function setup() {
+    pantalla = 0;
+
+    canvas = createCanvas(windowWidth, windowHeight);
+    canvas.style('position', 'fixed');
+    canvas.style('top', '0');
+    canvas.style('right', '0');
+
+    
+
+    //variable necesaria para poder hacer barra de carga
+    ancho = 20;
+}
+
+function draw() {
+    background(255, 50);
+    fill(0);
+    ellipse(pmouseX, pmouseY, 50, 50);
+
+    switch(pantalla){
+
+        case 0:
+    //carga imagen de la interfaz
+    image(imgIntefaz, 0, 0); 
+    
+    
+    //barra de carga de la primera pantalla
+    fill(255);
+    noStroke();
+    rect(65, 468, ancho+10, 10, 8);
+
+    //configuración frame count para barra de carga
+    if(frameCount%50 == 0) {
+    ancho +=40;
+
+    if(ancho>=310) {
+    pantalla = 1;
+    ancho = 0;
+}
+}
+    break;
+    
+
+//--------------------------------------------------------------------
+    //pantalla 2
+        case 1:
+        image(imgPant1, 0, 0);
+        
+
+        break; 
+
+//---------------------------------------------------------------------
+    //pantalla 3
+        case 2:
+
+        break;
+
+    }
+}
+
+
+
+
