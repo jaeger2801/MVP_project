@@ -2,6 +2,9 @@
 let socket = io();
 
 let canvas;
+ 
+//InputEvent para que el usuario pueda poner su nombre
+let userInput;
 
 /* const PORT = 5050;
 const IPaddress = '192.168.1.5'; */
@@ -21,6 +24,10 @@ function preload(){
 
 function setup() {
     pantalla = 1;
+
+    //metodo que permite el funcionamiento del cuadro de texto para poner el nombre
+        userInput = createInput('');
+        
 
     canvas = createCanvas(428, 926);
     /* canvas.style('position', 'fixed');
@@ -78,6 +85,15 @@ function draw() {
 //---------------------------------------------------------------------
     //pantalla 3
         case 2:
+        fill(0)
+        rectMode(CORNER)
+        rect(0, 0, 428, 926)
+        
+        //Ingresa el nombre
+        userInput.position((windowWidth / 2) - 80, windowHeight - 100);
+        userInput.size(260);
+
+        userInput.position(80, 80);
 
         break;
 
@@ -89,7 +105,7 @@ function mouseClicked(){
         case 1:
             //rect(110,827,209,35, 37);
             if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
-                pantalla = 0;
+                pantalla = 2;
                 console.log('se clikeó el cambio de pantalla');
             }
             break;
