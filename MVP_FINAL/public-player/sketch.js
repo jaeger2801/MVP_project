@@ -20,12 +20,12 @@ function preload(){
 }
 
 function setup() {
-    pantalla = 0;
+    pantalla = 1;
 
-    canvas = createCanvas(windowWidth, windowHeight);
-    canvas.style('position', 'fixed');
+    canvas = createCanvas(428, 926);
+    /* canvas.style('position', 'fixed');
     canvas.style('top', '0');
-    canvas.style('right', '0');
+    canvas.style('right', '0'); */
 
     
 
@@ -65,9 +65,14 @@ function draw() {
 //--------------------------------------------------------------------
     //pantalla 2
         case 1:
+        //Boton de entendido
+        fill(255)
+        rectMode(CORNER)
+        rect(110,827,209,35, 37);
+        
+        //Interfaz de las instrucciones
         image(imgPant1, 0, 0);
         
-
         break; 
 
 //---------------------------------------------------------------------
@@ -76,6 +81,18 @@ function draw() {
 
         break;
 
+    }
+}
+
+function mouseClicked(){
+    switch(pantalla){
+        case 1:
+            //rect(110,827,209,35, 37);
+            if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
+                pantalla = 0;
+                console.log('se clikeó el cambio de pantalla');
+            }
+            break;
     }
 }
 
