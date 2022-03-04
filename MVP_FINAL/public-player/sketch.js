@@ -23,7 +23,7 @@ function preload(){
 }
 
 function setup() {
-    pantalla = 1;
+    pantalla = 0;
 
     //metodo que permite el funcionamiento del cuadro de texto para poner el nombre
         userInput = createInput('');
@@ -95,8 +95,17 @@ function draw() {
 
         userInput.position(80, 80);
 
+        //Boton para cambiar de pantalla
+        fill(255)
+        rectMode(CORNER)
+        rect(110,827,209,35, 37);
+
         break;
 
+        //--------------------------------------------------------------------
+        //Pantalla 4, aqui va la interacción del juego
+        case 3:
+            break;
     }
 }
 
@@ -106,6 +115,15 @@ function mouseClicked(){
             //rect(110,827,209,35, 37);
             if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
                 pantalla = 2;
+                console.log('se clikeó el cambio de pantalla');
+            }
+            break;
+
+        //------------------------------------------------------------------------------
+        //boton pantalla 3
+        case 2:
+            if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
+                pantalla = 3;
                 console.log('se clikeó el cambio de pantalla');
             }
             break;
