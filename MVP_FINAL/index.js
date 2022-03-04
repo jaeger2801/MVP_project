@@ -9,10 +9,10 @@ const httpServer = app.listen(PORT)
 const { Server } = require('socket.io');
 const ioServer = new Server (httpServer); 
 
-const staticController = express.static('public-controller');
+const staticController = express.static('public-player');
 const staticDisplay = express.static('public-display');
 
-app.use('/controller', staticController);
+app.use('/player', staticPlayer);
 app.use('/display', staticDisplay);
 
 /*
