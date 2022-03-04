@@ -85,7 +85,7 @@ function draw() {
 //---------------------------------------------------------------------
     //pantalla 3
         case 2:
-        fill(0)
+        fill(100)
         rectMode(CORNER)
         rect(0, 0, 428, 926)
         
@@ -105,6 +105,14 @@ function draw() {
         //--------------------------------------------------------------------
         //Pantalla 4, aqui va la interacción del juego
         case 3:
+            fill(0)
+        rectMode(CORNER)
+        rect(0, 0, 428, 926)
+
+
+        fill(255)
+        rectMode(CORNER)
+        rect(110,827,209,35, 37);
             break;
     }
 }
@@ -127,6 +135,16 @@ function mouseClicked(){
                 console.log('se clikeó el cambio de pantalla');
             }
             break;
+
+             //------------------------------------------------------------------------------
+        //boton pantalla 4
+        case 3:
+            if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
+                console.log('se clikeó');
+                socket.emit('tapInformation');
+            }
+            break;
+    
     }
 }
 

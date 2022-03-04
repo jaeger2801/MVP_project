@@ -20,6 +20,11 @@ Set the ioServer to listen to new connections
 Set the socket to listen to an event and the message from controller
 Broadcast the message to the display
 */
+ioServer.on('connection', (socket) => {
+    socket.on('tapinformation', (tapInformations) => {
+        socket.broadcast.emit('tapinformation', tapInformations);
+    }); 
+});
 
 ioServer.on('connection', (socket) => {
     socket.on('position', (clientPositions) => {

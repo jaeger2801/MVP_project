@@ -1,5 +1,6 @@
 //Create the socket
 let socket = io();
+let contador = 0;
 
 let character = {
     x: 0,
@@ -19,6 +20,11 @@ function draw() {
     fill(80, 36, 25);
     noStroke();
     ellipse(character.x, character.y, 50, 50);
+}
+
+socket.on('tapInformation' ); {
+    console.log(contador);
+    this.contador +1;
 }
 
 /*
