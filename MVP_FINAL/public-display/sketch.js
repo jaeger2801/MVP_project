@@ -35,6 +35,7 @@ function setup() {
 
 function draw() {
     switch(pantalla){
+       //pantalla 1
         //En esta pantalla va a estar la publicidad junto con el codigo QR
         case 0:
             
@@ -42,39 +43,36 @@ function draw() {
 
             break;
     //---------------------------------------------------
-       //En esta pantalla se van a mostrar las instrucciones del juego
+       //pantalla 2
+        //En esta pantalla se van a mostrar las instrucciones del juego
         case 1:
-            background(235, 190, 155);
-            fill(80, 36, 25);
-            textSize(30);
-            text('instrucciones del juego', 50, 50);
+            
+            image(imagenDisplayPantalla2, 0, 0);
+            
             break;
 
     //---------------------------------------------------
+        //pantalla 3
         //En esta pantalla va a haber un contador del 3 - 1 para indicar al jugador cuando va a comenzar la experiencia
         case 2:
-            background(235, 190, 155);
-            fill(80, 36, 25);
-            textSize(30);
-            text('instrucciones del juego', 50, 50);
+            image(imagenDisplayPantalla3, 0, 0);
+
             break;
 
     //---------------------------------------------------
+        //pantalla 4
         //En esta pantalla se va a desarrollar toda la experiencia del juego
         case 3:
-            background(235, 190, 155);
-            fill(80, 36, 25);
-            textSize(30);
-            text('instrucciones del juego', 50, 50);
+            image(imagenDisplayPantalla4, 0, 0);
+
             break;
 
     //---------------------------------------------------
+        //pantalla 5
         //En esta pantalla se le indica al jugador el fin del juego y se le agradece por jugar
         case 4:
-            background(235, 190, 155);
-            fill(80, 36, 25);
-            textSize(30);
-            text('instrucciones del juego', 50, 50);
+            image(imagenDisplayPantalla5, 0, 0);
+
             break;
     }
     
