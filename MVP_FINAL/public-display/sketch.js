@@ -1,3 +1,4 @@
+const { text } = require("express");
 
 //Create the socket
 let socket = io();
@@ -6,7 +7,8 @@ let socket = io();
 let contador = 0;
 
 //Contador de 3 - 1 que hace el tiempo regresivo
-let timer = 3;
+let timer;
+let ancho;
 
 //Variable para cambiar entre pantallas dentro del juego
 let pantalla;
@@ -30,7 +32,9 @@ function preload() {
 }
 
 function setup() { 
-    pantalla = 0
+    ancho = 20;
+    timer = 3;
+    pantalla = 0;
     frameRate(60);
     createCanvas(1920, 1080);
     
@@ -60,6 +64,26 @@ function draw() {
         case 2:
             image(imagenDisplayPantalla3, 0, 0);
 
+            fill(255);
+            textSize(80);
+            text(timer, 1920/2-20, 1080/2);
+
+            if(frameCount%15 == 0) {
+                ancho +=40;
+            
+                if(ancho>=200) {
+                    timer = 2;
+                }
+                if(ancho >= 400){
+                    timer = 1;
+                }
+                if(ancho >= 600){
+                    timer = 0;
+                    /* socket.emit('cambio3' )*/
+                    pantalla = 3;
+                    }
+            }
+
             break;
 
     //---------------------------------------------------
@@ -67,6 +91,7 @@ function draw() {
         //En esta pantalla se va a desarrollar toda la experiencia del juego
         case 3:
             image(imagenDisplayPantalla4, 0, 0);
+            text(contador, 1920/2-20, 1080/2)
 
             break;
 
@@ -91,8 +116,12 @@ socket.on('tapinformation', (tapInformations)  => {
 //aqui se va a hacer el llamado del cambio de pantalla de la publicidad a las instrucciones del juego
 socket.on('cambio1', (cambioPantalla1) => {
     pantalla = 1;
-})
+    })
 
+//Aqui se hace el cambio de la pantalla de las instrucciones al juego
+socket.on('cambio2', (cambioPantalla1) => {
+    pantalla = 2;
+    })
 /*
 Listen to the event and use the directions
 You may want to use switch-case structure
