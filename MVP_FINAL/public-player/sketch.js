@@ -141,7 +141,7 @@ function mouseClicked(){
         case 3:
             if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
                 console.log('se clikeó');
-                socket.emit('tapInformation');
+                socket.emit('tapinformation');
             }
             break;
     

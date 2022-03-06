@@ -22,11 +22,10 @@ Broadcast the message to the display
 */
 ioServer.on('connection', (socket) => {
     socket.on('tapinformation', (tapInformations) => {
+        console.log(tapInformations);
         socket.broadcast.emit('tapinformation', tapInformations);
-    }); 
-});
 
-ioServer.on('connection', (socket) => {
+    }); 
     socket.on('position', (clientPositions) => {
         socket.broadcast.emit('position', clientPositions);
     }); 

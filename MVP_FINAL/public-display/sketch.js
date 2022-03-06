@@ -22,10 +22,10 @@ function draw() {
     ellipse(character.x, character.y, 50, 50);
 }
 
-socket.on('tapInformation' ); {
+socket.on('tapinformation', (tapInformations)  => {
+    contador +=1;
     console.log(contador);
-    this.contador +1;
-}
+    })
 
 /*
 Listen to the event and use the directions
