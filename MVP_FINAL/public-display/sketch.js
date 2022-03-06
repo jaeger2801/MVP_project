@@ -5,6 +5,9 @@ let socket = io();
 // Variable que indica la cantidad de clicks que se realiza dentro de la interaccion
 let contador = 0;
 
+//Contador de 3 - 1 que hace el tiempo regresivo
+let timer = 3;
+
 //Variable para cambiar entre pantallas dentro del juego
 let pantalla;
 

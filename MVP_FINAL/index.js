@@ -26,7 +26,14 @@ ioServer.on('connection', (socket) => {
         socket.broadcast.emit('tapinformation', tapInformations);
 
     }); 
+
+    //Metodo socket que cambia de la pantalla de publicidad a la de instrucciones
     socket.on('cambio1', (cambioPantalla1) => {
         socket.broadcast.emit('cambio1', cambioPantalla1);
+    }); 
+
+    //Metodo socket que cambia de la pantalla de instrucciones a contador para comenzar el juego
+    socket.on('cambio2', (cambioPantalla2) => {
+        socket.broadcast.emit('cambio2', cambioPantalla2);
     }); 
 });

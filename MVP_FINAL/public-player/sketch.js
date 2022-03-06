@@ -1,3 +1,4 @@
+
 //Create the socket
 let socket = io();
 
@@ -14,6 +15,9 @@ let pantalla;
 let imgIntefaz;
 let imgPant1
 
+//Contador de 3 - 1 que hace el tiempo regresivo
+let timer;
+
 //variable para barra de carga pantalla 1
 let ancho;
 
@@ -23,7 +27,9 @@ function preload(){
 }
 
 function setup() {
-    pantalla = 1;
+    timer = 3
+
+    pantalla = 4;
 
     //metodo que permite el funcionamiento del cuadro de texto para poner el nombre
     userInput = createInput('');
@@ -103,14 +109,27 @@ function draw() {
         //--------------------------------------------------------------------
         //Pantalla 4, conteo regresivo para iniciar el juego
         case 4:
-            fill(0)
-        rectMode(CORNER)
-        rect(0, 0, 428, 926)
+            fill(0);
+            textSize(40);
+            text(timer, 428/2, 926/2);
 
+            if(frameCount%20 == 0) {
+                ancho +=40;
+            
+                if(ancho>=200) {
+                    timer = 2;
+                }
+                if(ancho >= 400){
+                    timer = 1;
+                }
+                if(ancho >= 400){
+                    timer = 0;
+                    }
+                if(timer = 0){
+                    socket.emit('cambio2')
+                }
+            }
 
-        fill(255)
-        rectMode(CORNER)
-        rect(110,827,209,35, 37);
             break;
         
         //--------------------------------------------------------------------
