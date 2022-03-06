@@ -19,12 +19,12 @@ let imagenDisplayPantalla5
 
 //Función para llamada de imagenes en el codigo
 function preload() {
-    imagenDisplayPantalla1 = new Image('data/pantalla 1 (publicidad del juego).png');
-    imagenDisplayPantalla2 = new Image('data/pantalla 2 (instrucciones de lo que debe hacer el jugador en su celular).png');
-    imagenDisplayPantalla3 = new Image('data/pantalla 3 (contador de juego para que se prepare para jugar).png');
-    imagenDisplayPantalla4 = new Image('data/pantalla 4 (espacio donde se va a ver el juego) aqui sucede la magia.png');
-    imagenDisplayPantalla5 = new Image('data/pantalla 5 (pantalla que indica que el juego terminó).png');
- 
+    imagenDisplayPantalla1 = new loadImage('data/pantalla 1 (publicidad del juego).png');
+    imagenDisplayPantalla2 = new loadImage('data/pantalla 2 (instrucciones de lo que debe hacer el jugador en su celular).png');
+    imagenDisplayPantalla3 = new loadImage('data/pantalla 3 (contador de juego para que se prepare para jugar).png');
+    imagenDisplayPantalla4 = new loadImage('data/pantalla 4 (espacio donde se va a ver el juego) aqui sucede la magia.png');
+    imagenDisplayPantalla5 = new loadImage('data/pantalla 5 (pantalla que indica que el juego terminó).png');
+}
 
 function setup() { 
     pantalla = 0
@@ -35,14 +35,42 @@ function setup() {
 
 function draw() {
     switch(pantalla){
+        //En esta pantalla va a estar la publicidad junto con el codigo QR
         case 0:
+            
+            image(imagenDisplayPantalla1, 0, 0);
+
+            break;
+    //---------------------------------------------------
+       //En esta pantalla se van a mostrar las instrucciones del juego
+        case 1:
             background(235, 190, 155);
             fill(80, 36, 25);
             textSize(30);
-            text('Publicidad del juego', 50, 50);
+            text('instrucciones del juego', 50, 50);
             break;
+
     //---------------------------------------------------
-        case 1:
+        //En esta pantalla va a haber un contador del 3 - 1 para indicar al jugador cuando va a comenzar la experiencia
+        case 2:
+            background(235, 190, 155);
+            fill(80, 36, 25);
+            textSize(30);
+            text('instrucciones del juego', 50, 50);
+            break;
+
+    //---------------------------------------------------
+        //En esta pantalla se va a desarrollar toda la experiencia del juego
+        case 3:
+            background(235, 190, 155);
+            fill(80, 36, 25);
+            textSize(30);
+            text('instrucciones del juego', 50, 50);
+            break;
+
+    //---------------------------------------------------
+        //En esta pantalla se le indica al jugador el fin del juego y se le agradece por jugar
+        case 4:
             background(235, 190, 155);
             fill(80, 36, 25);
             textSize(30);
@@ -51,7 +79,7 @@ function draw() {
     }
     
 }
-}
+
 
 //aqui se llama el contador de cliks que realiza el usuario
 socket.on('tapinformation', (tapInformations)  => {
