@@ -1,5 +1,3 @@
-const { text } = require("express");
-
 //Create the socket
 let socket = io();
 
@@ -111,6 +109,9 @@ function draw() {
 socket.on('tapinformation', (tapInformations)  => {
     contador +=1;
     console.log(contador);
+    if(contador >= 101){
+        pantalla = 4
+    }
     })
 
 //aqui se va a hacer el llamado del cambio de pantalla de la publicidad a las instrucciones del juego
