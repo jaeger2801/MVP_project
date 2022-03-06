@@ -26,7 +26,7 @@ ioServer.on('connection', (socket) => {
         socket.broadcast.emit('tapinformation', tapInformations);
 
     }); 
-    socket.on('position', (clientPositions) => {
-        socket.broadcast.emit('position', clientPositions);
+    socket.on('cambio1', (cambioPantalla1) => {
+        socket.broadcast.emit('cambio1', cambioPantalla1);
     }); 
 });

@@ -23,18 +23,14 @@ function preload(){
 }
 
 function setup() {
-    pantalla = 0;
+    pantalla = 1;
 
     //metodo que permite el funcionamiento del cuadro de texto para poner el nombre
-        userInput = createInput('');
+    userInput = createInput('');
         
 
     canvas = createCanvas(428, 926);
-    /* canvas.style('position', 'fixed');
-    canvas.style('top', '0');
-    canvas.style('right', '0'); */
-
-    
+       
 
     //variable necesaria para poder hacer barra de carga
     ancho = 20;
@@ -47,7 +43,8 @@ function draw() {
 
     switch(pantalla){
 
-        case 0:
+    case 1:
+    //pantalla inicial de carga 
     //carga imagen de la interfaz
     image(imgIntefaz, 0, 0); 
     
@@ -64,14 +61,15 @@ function draw() {
     if(ancho>=310) {
     pantalla = 1;
     ancho = 0;
+    socket.emit('cambio1');
 }
 }
     break;
     
 
 //--------------------------------------------------------------------
-    //pantalla 2
-        case 1:
+    //pantalla 2 instrucciones del juego
+        case 2:
         //Boton de entendido
         fill(255)
         rectMode(CORNER)
@@ -83,8 +81,8 @@ function draw() {
         break; 
 
 //---------------------------------------------------------------------
-    //pantalla 3
-        case 2:
+    //pantalla 3 ingresa datos del correo electronico
+        case 3:
         fill(100)
         rectMode(CORNER)
         rect(0, 0, 428, 926)
@@ -103,8 +101,8 @@ function draw() {
         break;
 
         //--------------------------------------------------------------------
-        //Pantalla 4, aqui va la interacción del juego
-        case 3:
+        //Pantalla 4, conteo regresivo para iniciar el juego
+        case 4:
             fill(0)
         rectMode(CORNER)
         rect(0, 0, 428, 926)
