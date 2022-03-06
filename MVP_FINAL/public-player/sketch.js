@@ -59,7 +59,7 @@ function draw() {
     ancho +=40;
 
     if(ancho>=310) {
-    pantalla = 1;
+    pantalla = 2;
     ancho = 0;
     socket.emit('cambio1');
 }
@@ -112,31 +112,37 @@ function draw() {
         rectMode(CORNER)
         rect(110,827,209,35, 37);
             break;
+        
+        //--------------------------------------------------------------------
+        //Pantalla 5, aqui ocurre la interacción del juego
+        case 5:
+
+            break;
     }
 }
 
 function mouseClicked(){
     switch(pantalla){
-        case 1:
-            //rect(110,827,209,35, 37);
-            if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
-                pantalla = 2;
-                console.log('se clikeó el cambio de pantalla');
-            }
-            break;
-
-        //------------------------------------------------------------------------------
-        //boton pantalla 3
         case 2:
+            //rect(110,827,209,35, 37);
             if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
                 pantalla = 3;
                 console.log('se clikeó el cambio de pantalla');
             }
             break;
 
+        //------------------------------------------------------------------------------
+        //boton pantalla 3
+        case 3:
+            if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
+                pantalla = 4;
+                console.log('se clikeó el cambio de pantalla');
+            }
+            break;
+
              //------------------------------------------------------------------------------
         //boton pantalla 4
-        case 3:
+        case 4:
             if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
                 console.log('se clikeó');
                 socket.emit('tapinformation');
