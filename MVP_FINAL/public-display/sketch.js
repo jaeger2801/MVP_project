@@ -1,16 +1,32 @@
 
 //Create the socket
 let socket = io();
+
+// Variable que indica la cantidad de clicks que se realiza dentro de la interaccion
 let contador = 0;
+
+//Variable para cambiar entre pantallas dentro del juego
 let pantalla;
 
-/* let character = {
-    x: 0,
-    y: 0
-};
-let speed = 10; */
+//carga de imagenes
+let imagenDisplayPantalla1
+let imagenDisplayPantalla2
+let imagenDisplayPantalla3
+let imagenDisplayPantalla4
+let imagenDisplayPantalla5
 
-function setup() {
+
+
+//Función para llamada de imagenes en el codigo
+function preload() {
+    imagenDisplayPantalla1 = new Image('data/pantalla 1 (publicidad del juego).png');
+    imagenDisplayPantalla2 = new Image('data/pantalla 2 (instrucciones de lo que debe hacer el jugador en su celular).png');
+    imagenDisplayPantalla3 = new Image('data/pantalla 3 (contador de juego para que se prepare para jugar).png');
+    imagenDisplayPantalla4 = new Image('data/pantalla 4 (espacio donde se va a ver el juego) aqui sucede la magia.png');
+    imagenDisplayPantalla5 = new Image('data/pantalla 5 (pantalla que indica que el juego terminó).png');
+ 
+
+function setup() { 
     pantalla = 0
     frameRate(60);
     createCanvas(1920, 1080);
@@ -35,13 +51,15 @@ function draw() {
     }
     
 }
+}
 
+//aqui se llama el contador de cliks que realiza el usuario
 socket.on('tapinformation', (tapInformations)  => {
     contador +=1;
     console.log(contador);
     })
 
-//aqui se va a hacer el llamado del cambio de pantalla
+//aqui se va a hacer el llamado del cambio de pantalla de la publicidad a las instrucciones del juego
 socket.on('cambio1', (cambioPantalla1) => {
     pantalla = 1;
 })
