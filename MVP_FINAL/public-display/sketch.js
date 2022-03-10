@@ -33,7 +33,7 @@ function preload() {
 function setup() { 
     ancho = 20;
     timer = 3;
-    pantalla = 2;
+    pantalla = 0;
     frameRate(60);
     createCanvas(1920, 1080);
     
