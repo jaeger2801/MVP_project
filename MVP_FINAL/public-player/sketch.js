@@ -41,7 +41,7 @@ function preload(){
 function setup() {
     timer = 3
 
-    pantalla = 3;
+    pantalla = 1;
 
     //metodo que permite el funcionamiento del cuadro de texto para poner el nombre
     userInput = createInput('');
