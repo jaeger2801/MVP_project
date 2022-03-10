@@ -12,12 +12,9 @@ const IPaddress = '192.168.1.5'; */
 let pantalla;
 
 //caraga de imagenes
-let imagenPlayerPantalla1
-let imagenPlayerPantalla2
-let imagenPlayerPantalla3
-let imagenPlayerPantalla4
-let imagenPlayerPantalla5
-
+let imgIntefaz;
+let imgPant1;
+let logoNike;
 
 //Contador de 3 - 1 que hace el tiempo regresivo
 let timer;
@@ -26,13 +23,9 @@ let timer;
 let ancho;
 
 function preload(){
-    imagenPlayerPantalla1 = new loadImage("data/pantalla 1 (tiempo de carga).png");
-    imagenPlayerPantalla2 = new loadImage("data/pantalla 2 (ingresa correo del participante).png");
-    imagenPlayerPantalla3 = new loadImage("data/pantalla 3(indicaciones del juego).png");
-    imagenPlayerPantalla4 = new loadImage("data/pantalla 4 (boton para interactuar con el juego).png");
-    imagenPlayerPantalla5 = new loadImage("data/pantalla 5(agradecimiento por jugar).png");
-
-    
+    imgIntefaz = new loadImage("data/pantalla 1 (tiempo de carga).png");
+    imgPant1 = new loadImage("data/pantalla 2(indicaciones del juego).png");
+    logoNike = new loadImage("data/Logo reducido de nike.png")
 }
 
 function setup() {
@@ -61,7 +54,7 @@ function draw() {
     case 1:
     //pantalla inicial de carga 
     //carga imagen de la interfaz
-    image(imagenPlayerPantalla1, 0, 0); 
+    image(imgIntefaz, 0, 0); 
     
     
     //barra de carga de la primera pantalla
@@ -90,22 +83,17 @@ function draw() {
         rectMode(CORNER)
         rect(110,827,209,35, 37);
         
-        //Interfaz de registro de datos
-        image(imagenPlayerPantalla2, 0, 0);
+        //Interfaz de las instrucciones
+        image(imgPant1, 0, 0);
         
         break; 
 
 //---------------------------------------------------------------------
-    //pantalla 3 se muestra boton que el usuario debe presionar para indicar que entendió las instrucciones
+    //pantalla 3 ingresa datos del correo electronico
         case 3:
-
-        //Boton para cambiar de pantalla
-        fill(255)
+        fill(100)
         rectMode(CORNER)
-        rect(97,344,239,240, 80);
-
-        //imagen para poner el botón
-        image(imagenPlayerPantalla3, 0, 0);
+        rect(0, 0, 428, 926)
         
         //Ingresa el nombre
         userInput.position((windowWidth / 2) - 80, windowHeight - 100);
@@ -113,29 +101,58 @@ function draw() {
 
         userInput.position(80, 80);
 
+        //Boton para cambiar de pantalla
+        fill(255)
+        rectMode(CORNER)
+        rect(110,827,209,35, 37);
+
         break;
 
         //--------------------------------------------------------------------
-        //Pantalla 4, aqui se desarrolla el juego
+        //Pantalla 4, conteo regresivo para iniciar el juego
         case 4:
             
-            //Boton para cambiar de pantalla
-            fill(255)
-            rectMode(CORNER)
-            rect(97,344,239,240, 80);
+            fill(0);
+            rect(0, 0, 428, 926);
 
-            image(imagenPlayerPantalla4, 0, 0);
-      
+            image(logoNike, 20, 20);
+
+            fill(255);
+            textSize(80);
+            text(timer, 428/2-20, 926/2);
+
+            if(frameCount%15 == 0) {
+                ancho +=40;
+            
+                if(ancho>=200) {
+                    timer = 2;
+                }
+                if(ancho >= 400){
+                    timer = 1;
+                }
+                if(ancho >= 600){
+                    timer = 0;
+                    /* socket.emit('cambio3' )*/
+                    pantalla = 5;
+                    }
+            }
             
 
             break;
         
         //--------------------------------------------------------------------
-        //Pantalla 5, agradece la participacion del jugador
+        //Pantalla 5, aqui ocurre la interacción del juego
         case 5:
-            
+            fill(0)
+            rectMode(CORNER)
+            rect(0, 0, 428, 926)
 
-            image(imagenPlayerPantalla5, 0, 0);
+            image(logoNike, 20, 20);
+    
+            //Boton para cambiar de pantalla
+            fill(255)
+            rectMode(CORNER)
+            rect(110,827,209,35, 37);
 
             break;
     }
@@ -154,8 +171,7 @@ function mouseClicked(){
         //------------------------------------------------------------------------------
         //boton pantalla 3
         case 3:
-            //rect(97,344,239,240, 80);
-            if(mouseX > 97 && mouseX < 336 && mouseY > 344 && mouseY < 584){
+            if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
                 pantalla = 4;
                 console.log('se clikeó el cambio de pantalla');
                 socket.emit('cambio2')
@@ -165,8 +181,8 @@ function mouseClicked(){
              //------------------------------------------------------------------------------
         //boton pantalla 5
         //En esta pantalla se da la interacción de los clicks para que el juego funcione
-        case 4:
-            if(mouseX > 97 && mouseX < 336 && mouseY > 344 && mouseY < 584){
+        case 5:
+            if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
                 console.log('se clikeó');
                 socket.emit('tapinformation');
             }

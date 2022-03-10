@@ -3,7 +3,7 @@ const express = require('express');
 
 //Create a httpServer
 const app = express();
-const PORT= 5050
+const PORT= 5051
 const httpServer = app.listen(PORT)
 //Create a new instance of Socket.io Server
 const { Server } = require('socket.io');
@@ -21,30 +21,19 @@ Set the socket to listen to an event and the message from controller
 Broadcast the message to the display
 */
 ioServer.on('connection', (socket) => {
-    //registra los clicks que realiza el usuario
     socket.on('tapinformation', (tapInformations) => {
         console.log(tapInformations);
         socket.broadcast.emit('tapinformation', tapInformations);
 
     }); 
 
-    //Metodo socket que cambia de la pantalla de publicidad a la de registro
+    //Metodo socket que cambia de la pantalla de publicidad a la de instrucciones
     socket.on('cambio1', (cambioPantalla1) => {
         socket.broadcast.emit('cambio1', cambioPantalla1);
     }); 
 
-    //Metodo socket que cambia de la pantalla de regitro a las instrucciones
+    //Metodo socket que cambia de la pantalla de instrucciones a contador para comenzar el juego
     socket.on('cambio2', (cambioPantalla2) => {
         socket.broadcast.emit('cambio2', cambioPantalla2);
     }); 
-
-    //Metodo socket que cambia de la pantalla de instrucciones al conteo regresivo
-    socket.on('cambio3', (cambioPantalla3) => {
-        socket.broadcast.emit('cambio3', cambioPantalla3);
-    });
-
-    //Metodo socket que cambia de la pantalla de instrucciones al conteo regresivo
-    socket.on('cambio3', (cambioPantalla3) => {
-        socket.broadcast.emit('cambio3', cambioPantalla3);
-    });
 });
