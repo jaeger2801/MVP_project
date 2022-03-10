@@ -22,10 +22,10 @@ let imagenDisplayPantalla5
 
 //Función para llamada de imagenes en el codigo
 function preload() {
-    imagenDisplayPantalla1 = new loadImage('data/pantalla 1 publicidad.gif'); //funciona y pesa: 20 MB
+    imagenDisplayPantalla1 = new loadImage('data/pantalla 5 el propio.gif'); //funciona y pesa: 20 MB
     imagenDisplayPantalla2 = new loadImage('data/pantalla 2 llenar datos.gif'); //funciona y pesa: 14 MB
     imagenDisplayPantalla3 = new loadImage('data/pantalla 3 intrucciones del juego.gif'); // funciona
-    imagenDisplayPantalla4 = new loadImage('data/pantalla 4 (espacio donde se va a ver el juego) aqui sucede la magia.png');
+    imagenDisplayPantalla4 = new loadImage('data/pantalla_4_(conteo_regresivo_antes_de_la_experiencia).png');
     imagenDisplayPantalla5 = new loadImage('data/pantalla 5 (pantalla que indica que el juego terminó).png');
     imagenDisplayPantalla6 = new loadImage('data/pantalla 5 (pantalla que indica que el juego terminó).png');
 }
@@ -71,7 +71,7 @@ function draw() {
         //pantalla 4
         //En esta pantalla va a haber un contador de 3 segundos que indicará en que momento comienza la experiencia
         case 3:
-            //image(imagenDisplayPantalla4, 0, 0);
+            image(imagenDisplayPantalla4, 0, 0);
 
             fill(255);
             textSize(80);
