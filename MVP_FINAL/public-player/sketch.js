@@ -12,9 +12,12 @@ const IPaddress = '192.168.1.5'; */
 let pantalla;
 
 //caraga de imagenes
-let imgIntefaz;
-let imgPant1;
-let logoNike;
+let imagenPlayerPantalla1
+let imagenPlayerPantalla2
+let imagenPlayerPantalla3
+let imagenPlayerPantalla4
+let imagenPlayerPantalla5
+
 
 //Contador de 3 - 1 que hace el tiempo regresivo
 let timer;
@@ -23,9 +26,13 @@ let timer;
 let ancho;
 
 function preload(){
-    imgIntefaz = new loadImage("data/pantalla 1 (tiempo de carga).png");
-    imgPant1 = new loadImage("data/pantalla 2(indicaciones del juego).png");
-    logoNike = new loadImage("data/Logo reducido de nike.png")
+    imagenPlayerPantalla1 = new loadImage("data/pantalla 1 (tiempo de carga).png");
+    imagenPlayerPantalla2 = new loadImage("data/pantalla 2 (ingresa correo del participante).png");
+    imagenPlayerPantalla3 = new loadImage("data/pantalla 3(indicaciones del juego).png");
+    imagenPlayerPantalla4 = new loadImage("data/pantalla 4 (boton para interactuar con el juego).png");
+    imagenPlayerPantalla5 = new loadImage("data/pantalla 5(agradecimiento por jugar).png");
+
+    
 }
 
 function setup() {
