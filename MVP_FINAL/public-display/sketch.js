@@ -17,6 +17,7 @@ let imagenDisplayPantalla2
 let imagenDisplayPantalla3
 let imagenDisplayPantalla4
 let imagenDisplayPantalla5
+let pruebaGif
 
 //Carga de videos
 let videoPrueba
@@ -28,9 +29,11 @@ function preload() {
     imagenDisplayPantalla1 = new loadImage('data/pantalla 1 publicidad.gif');
     imagenDisplayPantalla2 = new loadImage('data/pantalla 2 llenar datos.gif');
     imagenDisplayPantalla3 = new loadImage('data/pantalla 3 intrucciones del juego.gif');
-    imagenDisplayPantalla4 = new loadImage('data/pantalla 5 el propio.gif');
-    imagenDisplayPantalla5 = new loadImage('data/pantalla 6 reultados.gif');
+    imagenDisplayPantalla4 = new loadImage('data/pantalla 4 (conteo regresivo antes de la experiencia)_Mesa de trabajo 1.png');
+    imagenDisplayPantalla5 = new loadImage('data/pantalla 5 el propio.gif');
+    imagenDisplayPantalla6 = new loadImage("data/pantalla 6 reultados.gif");
 
+    pruebaGif = new loadImage("data/Comp 1.gif");
     /* //crea video
     videoPrueba = new loadImage('data/Comp 1.gif'); */
 }
@@ -38,19 +41,20 @@ function preload() {
 function setup() { 
     ancho = 20;
     timer = 3;
-    pantalla = 5;
+    pantalla = 0;
     frameRate(60);
     createCanvas(1920, 1080);
     
 }
 
 function draw() {
+
     switch(pantalla){
        //pantalla 1
         //En esta pantalla va a estar la publicidad junto con el codigo QR
         case 0:
             
-            image(imagenDisplayPantalla1, 0, 0);
+            image(pruebaGif, 0, 0);
 
             break;
     //---------------------------------------------------
@@ -136,32 +140,7 @@ Listen to the event and use the directions
 You may want to use switch-case structure
 */
 
-    socket.on('position', (movement)=> {
-
-        switch (movement) {
-            case 'UP': 
-            character.y -= speed;
-                
-                break;
-        
-                case 'DOWN': 
-            character.y += speed;
-                
-                break;
     
-                case 'RIGHT': 
-            character.x += speed;
-                
-                break;
-    
-                case 'LEFT': 
-            character.x -= speed;
-                
-                break;
-            
-        }
-        
-    })
     
 
 

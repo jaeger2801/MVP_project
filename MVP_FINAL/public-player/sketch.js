@@ -61,7 +61,7 @@ function draw() {
     case 1:
     //pantalla inicial de carga 
     //carga imagen de la interfaz
-    image(imgIntefaz, 0, 0); 
+    image(imagenPlayerPantalla1, 0, 0); 
     
     
     //barra de carga de la primera pantalla
@@ -90,17 +90,22 @@ function draw() {
         rectMode(CORNER)
         rect(110,827,209,35, 37);
         
-        //Interfaz de las instrucciones
-        image(imgPant1, 0, 0);
+        //Interfaz de registro de datos
+        image(imagenPlayerPantalla2, 0, 0);
         
         break; 
 
 //---------------------------------------------------------------------
-    //pantalla 3 ingresa datos del correo electronico
+    //pantalla 3 se muestra boton que el usuario debe presionar para indicar que entendió las instrucciones
         case 3:
-        fill(100)
+
+        //Boton para cambiar de pantalla
+        fill(255)
         rectMode(CORNER)
-        rect(0, 0, 428, 926)
+        rect(97,344,239,240, 80);
+
+        //imagen para poner el botón
+        image(imagenPlayerPantalla3, 0, 0);
         
         //Ingresa el nombre
         userInput.position((windowWidth / 2) - 80, windowHeight - 100);
@@ -108,58 +113,29 @@ function draw() {
 
         userInput.position(80, 80);
 
-        //Boton para cambiar de pantalla
-        fill(255)
-        rectMode(CORNER)
-        rect(110,827,209,35, 37);
-
         break;
 
         //--------------------------------------------------------------------
-        //Pantalla 4, conteo regresivo para iniciar el juego
+        //Pantalla 4, aqui se desarrolla el juego
         case 4:
             
-            fill(0);
-            rect(0, 0, 428, 926);
+            //Boton para cambiar de pantalla
+            fill(255)
+            rectMode(CORNER)
+            rect(97,344,239,240, 80);
 
-            image(logoNike, 20, 20);
-
-            fill(255);
-            textSize(80);
-            text(timer, 428/2-20, 926/2);
-
-            if(frameCount%15 == 0) {
-                ancho +=40;
-            
-                if(ancho>=200) {
-                    timer = 2;
-                }
-                if(ancho >= 400){
-                    timer = 1;
-                }
-                if(ancho >= 600){
-                    timer = 0;
-                    /* socket.emit('cambio3' )*/
-                    pantalla = 5;
-                    }
-            }
+            image(imagenPlayerPantalla4, 0, 0);
+      
             
 
             break;
         
         //--------------------------------------------------------------------
-        //Pantalla 5, aqui ocurre la interacción del juego
+        //Pantalla 5, agradece la participacion del jugador
         case 5:
-            fill(0)
-            rectMode(CORNER)
-            rect(0, 0, 428, 926)
+            
 
-            image(logoNike, 20, 20);
-    
-            //Boton para cambiar de pantalla
-            fill(255)
-            rectMode(CORNER)
-            rect(110,827,209,35, 37);
+            image(imagenPlayerPantalla5, 0, 0);
 
             break;
     }
@@ -178,7 +154,8 @@ function mouseClicked(){
         //------------------------------------------------------------------------------
         //boton pantalla 3
         case 3:
-            if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
+            //rect(97,344,239,240, 80);
+            if(mouseX > 97 && mouseX < 336 && mouseY > 344 && mouseY < 584){
                 pantalla = 4;
                 console.log('se clikeó el cambio de pantalla');
                 socket.emit('cambio2')
@@ -188,8 +165,8 @@ function mouseClicked(){
              //------------------------------------------------------------------------------
         //boton pantalla 5
         //En esta pantalla se da la interacción de los clicks para que el juego funcione
-        case 5:
-            if(mouseX > 110 && mouseX < 319 && mouseY > 827 && mouseY < 862){
+        case 4:
+            if(mouseX > 97 && mouseX < 336 && mouseY > 344 && mouseY < 584){
                 console.log('se clikeó');
                 socket.emit('tapinformation');
             }
