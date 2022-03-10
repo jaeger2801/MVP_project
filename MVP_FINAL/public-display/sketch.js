@@ -18,21 +18,27 @@ let imagenDisplayPantalla3
 let imagenDisplayPantalla4
 let imagenDisplayPantalla5
 
+//Carga de videos
+let videoPrueba
+
 
 
 //Función para llamada de imagenes en el codigo
 function preload() {
-    imagenDisplayPantalla1 = new loadImage('data/pantalla 1 (publicidad del juego).png');
-    imagenDisplayPantalla2 = new loadImage('data/pantalla 2 (instrucciones de lo que debe hacer el jugador en su celular).png');
-    imagenDisplayPantalla3 = new loadImage('data/pantalla 3 (contador de juego para que se prepare para jugar).png');
-    imagenDisplayPantalla4 = new loadImage('data/pantalla 4 (espacio donde se va a ver el juego) aqui sucede la magia.png');
-    imagenDisplayPantalla5 = new loadImage('data/pantalla 5 (pantalla que indica que el juego terminó).png');
+    imagenDisplayPantalla1 = new loadImage('data/pantalla 1 publicidad.gif');
+    imagenDisplayPantalla2 = new loadImage('data/pantalla 2 llenar datos.gif');
+    imagenDisplayPantalla3 = new loadImage('data/pantalla 3 intrucciones del juego.gif');
+    imagenDisplayPantalla4 = new loadImage('data/pantalla 5 el propio.gif');
+    imagenDisplayPantalla5 = new loadImage('data/pantalla 6 reultados.gif');
+
+    /* //crea video
+    videoPrueba = new loadImage('data/Comp 1.gif'); */
 }
 
 function setup() { 
     ancho = 20;
     timer = 3;
-    pantalla = 0;
+    pantalla = 5;
     frameRate(60);
     createCanvas(1920, 1080);
     
@@ -100,7 +106,9 @@ function draw() {
             image(imagenDisplayPantalla5, 0, 0);
 
             break;
+
     }
+
     
 }
 
